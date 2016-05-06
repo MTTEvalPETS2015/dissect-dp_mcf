@@ -40,4 +40,6 @@ bboxes(i).bbox = nms(bbox, 0.5);
 ```
 > - So the chain of data flow is: boxes-->bbox-->bboxes. **NOTE** that bboxes is not used at all in DP_MCF, because the bounding box values are saved in different ways.
 
-
+(5) about `bboxes2dres` and `dres2bboxes`
+> - For `bboxes2dres`, DPM-->DP_MCF, including [x1,y1,x2,y2,score]-->[x,y,w,h,r,fr] (note: r==score) and 1xN struct-->1xM struct, where M = N x D
+> - For `dres2bboxes`, the reverse process of `bboxes2dres`. However now dres should be processed by tracker hence has new filed 'id'.
